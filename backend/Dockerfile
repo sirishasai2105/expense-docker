@@ -3,6 +3,6 @@ EXPOSE 8080
 RUN mkdir /opt/server
 WORKDIR /opt/server
 COPY code . 
-ENV DB_HOST="mysql"
+ENV DB_HOST="localhost"
 RUN npm install 
 CMD ["node","index.js"]
