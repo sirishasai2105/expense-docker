@@ -24,7 +24,7 @@
 
 
 
----------BEFORE BEST PRACTICES----------
+#---------BEFORE BEST PRACTICES----------
 FROM nginx:mainline-alpine3.20-slim
 COPY code /usr/share/nginx/html
 RUN rm -rf /etc/nginx/nginx.conf
