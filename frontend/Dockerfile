@@ -1,4 +1,4 @@
------------AFTER BEST PRACTICES----------------
+#-----------AFTER BEST PRACTICES----------------
 FROM nginx:mainline-alpine3.20-slim
 
 RUN rm -rf /etc/nginx/nginx.conf && \
