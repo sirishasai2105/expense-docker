@@ -1,5 +1,6 @@
+#-----------AFTER BEST PRACTICES----------------
 FROM nginx:mainline-alpine3.20-slim
-#FROM nginx:1.27.2 mainline-alpine-slim
+
 RUN rm -rf /etc/nginx/nginx.conf && \
     rm -rf /etc/nginx/conf.d/default.conf && \
     mkdir -p /var/cache/nginx/client_temp && \
@@ -13,9 +14,18 @@ RUN rm -rf /etc/nginx/nginx.conf && \
     chown -R nginx:nginx /var/log/nginx && \
     touch /var/run/nginx.pid && \
     chown -R nginx:nginx /var/run/nginx.pid /run/nginx.pid
+
+RUN rm -rf /etc/nginx/nginx.conf && \
+    rm -rf /etc/nginx/conf.d/default.conf
+COPY expense.conf /etc/nginx/nginx.conf
+USER expense
+COPY code /usr/share/nginx/html
+
+
+
+#---------BEFORE BEST PRACTICES----------
+FROM nginx:mainline-alpine3.20-slim
 COPY code /usr/share/nginx/html
 RUN rm -rf /etc/nginx/nginx.conf
 RUN rm -rf /etc/nginx/conf.d/default.conf
-USER nginx
 COPY expense.conf /etc/nginx/nginx.conf
-
