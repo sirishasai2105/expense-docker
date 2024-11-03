@@ -2,7 +2,8 @@
 # code related to build 
 FROM node:20 AS builder
 WORKDIR /opt/server
-COPY code . 
+COPY package.json .
+COPY *.js .
 RUN npm install
 
 
@@ -16,7 +17,6 @@ WORKDIR /opt/server
 COPY --from=builder /opt/server /opt/server
 USER expense
 CMD ["node","index.js"]
-
 
 
 # -------------------BEFORE BEST PRACTICES------------------
